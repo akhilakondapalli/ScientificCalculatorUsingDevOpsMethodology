@@ -21,6 +21,7 @@ public class Calculator {
 
                 System.out.println("1.Square root");
                 System.out.println("2.Factorial");
+                System.out.println("3.Natural Logarithm");
                 System.out.println("5.exit");
                 choice = input.nextInt();
             }
@@ -54,7 +55,18 @@ public class Calculator {
                     }
                     System.out.println("The Factorial of " + number2 + " is " + calculator.factorial(number2));
                     break;
-
+                case 3:
+                    double number3;
+                    try{
+                        System.out.println("Enter positive number to calculate Logarithm. \n");
+                        number3 = input.nextDouble();
+                    }
+                    catch(InputMismatchException exception){
+                        logger.error("[ERROR] :Type mismatch - Number type expected ; Encountered different type");
+                        return;
+                    }
+                    System.out.println("Logarithm of " + number3 + " is " + calculator.logarithm(number3));
+                    break;
 
                 default:
                     System.out.println("Exiting !!!");
@@ -88,5 +100,19 @@ public class Calculator {
         logger.info("Factorial - input : "+ input_val + " output : " + result);
         return result;
     }
+    public double logarithm(double number){
+        double result;
+
+        if(number>0){
+            result=Math.log(number);
+            logger.info("Logarithm - input : "+ number + " output : " + result);
+            return result;
+        }
+        logger.info("Logarithm - input : "+number + " output : Error! Logarithm can't be calculated for  zero and negative numbers !!!");
+        return Double.NaN;
+
+    }
+
+
 
 }

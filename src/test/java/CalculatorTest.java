@@ -36,5 +36,20 @@ public class CalculatorTest {
         assertNotEquals("False positive test for Factorial of given input", 6.0, calculator.factorial(-5), DELTA);
         assertNotEquals("False positive test for Factorial of given input", 9.0, calculator.factorial(3), DELTA);
     }
+    @Test
+    public void logarithmTruePositive() {
+        assertEquals("True positive test for logarithm of given input", 2.484906649788, calculator.logarithm(12), DELTA);
+        assertEquals("True positive test for logarithm of given input", Double.NaN, calculator.logarithm(-5), DELTA);
+        assertEquals("True positive test for logarithm of given input", Double.NaN, calculator.logarithm(0), DELTA);
+        assertEquals("True positive test for logarithm of given input", 4.605170185988092, calculator.logarithm(100), DELTA);
+    }
 
+    @Test
+    public void logarithmFalsePositive() {
+        assertNotEquals("False positive test for logarithm of given input", 0.0, calculator.logarithm(0), DELTA);
+        assertNotEquals("False positive test for logarithm of given input", 6.0, calculator.logarithm(-5), DELTA);
+        assertNotEquals("False positive test for logarithm of given input", 9.0, calculator.logarithm(3), DELTA);
+    }
 }
+
+
