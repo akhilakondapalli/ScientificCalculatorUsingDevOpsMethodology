@@ -1,0 +1,8 @@
+---
+- name: Pull docker image of mini project
+  hosts: all
+  tasks:
+    - name: Pull mini project calculator image
+      docker_image:
+        name: akhila7113/scientificcalculator
+        source: pull
