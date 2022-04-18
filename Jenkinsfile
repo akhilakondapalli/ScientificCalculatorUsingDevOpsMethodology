@@ -27,6 +27,15 @@ pipeline {
                 }
             }
         }
+        stage('Step 4 : push image to docker hub'){
+            steps{
+                script{
+                    docker.withRegistry('','docker-jenkins'){
+                        imageName.push()
+                    }
+                }
+            }
+        }
         
 }
 }
