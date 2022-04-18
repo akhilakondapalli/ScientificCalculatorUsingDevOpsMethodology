@@ -20,11 +20,12 @@ public class Calculator {
             try {
 
                 System.out.println("1.Square root");
+                System.out.println("2.Factorial");
                 System.out.println("5.exit");
                 choice = input.nextInt();
             }
             catch(InputMismatchException exception){
-                logger.error("[ERROR]:Type mismatch - Integer type expected ; Encountered different type or input choice out of range 1 to 5.");
+                logger.error("[ERROR]:Type mismatch - Integer type expected ; Encountered different type ");
                 return;
 
             }
@@ -32,7 +33,7 @@ public class Calculator {
                 case 1:
                     double number1;
                     try {
-                        System.out.println("Enter any positive number to calculate Square root. \n");
+                        System.out.println("Enter any positive Integer to calculate Square root. \n");
                         number1 = input.nextDouble();
                     }
                     catch(InputMismatchException exception){
@@ -41,6 +42,20 @@ public class Calculator {
                     }
                     System.out.println("The square root of " + number1 + " is " + calculator.squareRoot(number1));
                     break;
+                case 2:
+                    double number2;
+                    try{
+                        System.out.println("Enter positive Integer to calculate Factorial. \n");
+                        number2 = input.nextDouble();
+                    }
+                    catch(InputMismatchException exception){
+                        logger.error("[ERROR] :Type mismatch - Integer type expected ; Encountered different type");
+                        return;
+                    }
+                    System.out.println("The Factorial of " + number2 + " is " + calculator.factorial(number2));
+                    break;
+
+
                 default:
                     System.out.println("Exiting !!!");
                     return;
@@ -51,11 +66,26 @@ public class Calculator {
         double result;
         if(number < 0)
         {
-            logger.info("SquareRoot - input : "+number + " output : Error! Square root not defined for negative integers !!!");
+            logger.info("SquareRoot - input : "+number + " output : Error! Square root can't be calculated for negative integers !!!");
             return Double.NaN;
         }
         result = Math.sqrt(number);
         logger.info("SquareRoot - input : "+ number + " output : " + result);
+        return result;
+    }
+
+    public double factorial(double number){
+        double result=1;
+        double input_val=number;
+        if(number<0){
+            logger.info("Factorial - input : "+number + " output : Error! Factorial can't be calculated for negative integers !!!");
+            return Double.NaN;
+        }
+        while(number != 0){
+            result = result * number;
+            number--;
+        }
+        logger.info("Factorial - input : "+ input_val + " output : " + result);
         return result;
     }
 
