@@ -1,5 +1,7 @@
 pipeline {
-   
+   environment{
+        imageName = ''
+    }
     agent any
 
     stages {
