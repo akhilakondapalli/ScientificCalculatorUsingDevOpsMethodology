@@ -27,11 +27,21 @@ pipeline {
                 }
             }
         }
+        
         stage('Step 4 : push image to docker hub'){
             steps{
                 script{
                     docker.withRegistry('','docker-jenkins'){
                         imageName.push()
+                    }
+                }
+            }
+        }
+        
+        stage('Step 5 : Ansible pull image from docker hub'){
+            steps{
+                script{
+                    ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'deploy-docker/inventory', playbook: 'deploy-docker/deploy-image.yml', sudoUser: null
                     }
                 }
             }
