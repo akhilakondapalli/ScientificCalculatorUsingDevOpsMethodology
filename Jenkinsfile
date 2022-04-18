@@ -19,5 +19,14 @@ pipeline {
                 }
             }
         }
+        
+        stage('Step 3 :Build Docker Image'){
+            steps{
+                script{
+                    imageName = docker.build "akhila7113/scientificcalculator"
+                }
+            }
+        }
+        
 }
 }
