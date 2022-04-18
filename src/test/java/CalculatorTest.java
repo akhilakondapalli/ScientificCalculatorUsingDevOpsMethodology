@@ -21,7 +21,6 @@ public class CalculatorTest {
         assertNotEquals("False positive test for Square root of given input", 8.0, calculator.squareRoot(144), DELTA);
         assertNotEquals("False positive test for Square root of given input", 13.0, calculator.squareRoot(1000), DELTA);
     }
-
     @Test
     public void factorialTruePositive() {
         assertEquals("True positive test for Factorial of given input", 1.0, calculator.factorial(0), DELTA);
@@ -50,6 +49,22 @@ public class CalculatorTest {
         assertNotEquals("False positive test for logarithm of given input", 6.0, calculator.logarithm(-5), DELTA);
         assertNotEquals("False positive test for logarithm of given input", 9.0, calculator.logarithm(3), DELTA);
     }
+
+    @Test
+    public void powerFunctionTruePositive() {
+        assertEquals("True positive test for power function of given inputs", 1024.0, calculator.powerFunction(2,10), DELTA);
+        assertEquals("True positive test for power function of given inputs", 1.0, calculator.powerFunction(1890,0), DELTA);
+        assertEquals("True positive test for power function of given inputs", Double.NaN, calculator.powerFunction(0,0), DELTA);
+        assertEquals("True positive test for power function of given inputs", 0.01, calculator.powerFunction(10,-2), DELTA);
+
+    }
+    @Test
+    public void powerFunctionFalsePositive() {
+        assertNotEquals("False positive test for power function of given inputs", 64.0, calculator.powerFunction(2,3), DELTA);
+        assertNotEquals("False positive test for power function of given inputs", 1.0, calculator.powerFunction(0,0), DELTA);
+        assertNotEquals("False positive test for power function of given inputs", 0.001, calculator.powerFunction(10,-2), DELTA);
+
+
+    }
+
 }
-
-

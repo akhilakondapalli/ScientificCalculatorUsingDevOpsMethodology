@@ -12,7 +12,7 @@ public class Calculator {
     public static void main(String[] args){
         int choice;
 
-        System.out.println("Welcome to Scientific Calculator.Calculator.Please choose any option.\n");
+        System.out.println("Welcome to Scientific Calculator !!!..Please choose any option.\n");
 
         Calculator calculator = new Calculator();
 
@@ -22,6 +22,7 @@ public class Calculator {
                 System.out.println("1.Square root");
                 System.out.println("2.Factorial");
                 System.out.println("3.Natural Logarithm");
+                System.out.println("4.Power Function");
                 System.out.println("5.exit");
                 choice = input.nextInt();
             }
@@ -67,7 +68,23 @@ public class Calculator {
                     }
                     System.out.println("Logarithm of " + number3 + " is " + calculator.logarithm(number3));
                     break;
+                case 4:
+                    double number4;
+                    double number5;
+                    try {
+                        System.out.print("\nEnter base number: ");
+                        number4 = input.nextDouble();
+                        System.out.print("\nEnter exponent number: ");
+                        number5 = input.nextDouble();
 
+                        System.out.println(number4 + " raised to the power " + number5 + " is : " + calculator.powerFunction(number4, number5));
+                    }
+                    catch (InputMismatchException exception) {
+
+                        logger.error("[ERROR] :Type mismatch - Integer type expected ; Encountered different type");
+
+                    }
+                    break;
                 default:
                     System.out.println("Exiting !!!");
                     return;
@@ -112,7 +129,20 @@ public class Calculator {
         return Double.NaN;
 
     }
+    public double powerFunction(double number1 , double number2){
+        double result;
+        if(number1 == 0 && number2 == 0)
+        {
+            logger.info("PowerFunction - input : "+ number1 +"^"+number2 + " output : Error! PowerFunction can't be calculated if both base and exponent is zero !!!");
+            return Double.NaN;
 
+        }
+        result = Math.pow(number1,number2);
+        logger.info("PowerFunction - input : "+ number1 +"^"+number2 + " output : " + result);
+        return result;
+
+
+    }
 
 
 }
